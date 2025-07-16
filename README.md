@@ -1,12 +1,22 @@
-# React + Vite
+# Sweet Shop Management System (TDD)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple Sweet Shop Management System built with React + Redux Toolkit, following Test-Driven Development (TDD) principles.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Add sweets (name, category, price, quantity)  
+Delete sweets  
+Purchase sweets (decrease quantity)  
+Restock sweets (increase quantity)  
+Search sweets by name or category  
+Sort sweets by name, category, price, or quantity  
+All logic covered with unit tests using Jest
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Frontend: React, Redux Toolkit
+State Management: Redux store only (no backend)
+Testing: Jest + Babel -> Dependency = npm install --save-dev jest babel-jest @babel/preset-env @babel/preset-react
+Build Tool: Vite
+
+
