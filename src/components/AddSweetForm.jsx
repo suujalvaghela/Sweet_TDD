@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import { addSweet } from '../redux/sweetSlice';
 
 const AddSweetForm = () => {
@@ -45,11 +45,24 @@ const AddSweetForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Add Sweet</h2>
-      <input placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-md mx-auto"
+    >
+      <h2 className="text-xl font-bold mb-4 text-center">Add Sweet</h2>
 
-      <select value={category} onChange={e => setCategory(e.target.value)}>
+      <input
+        placeholder="Name"
+        value={name}
+        onChange={e => setName(e.target.value)}
+        className="w-full mb-3 px-3 py-2 border rounded"
+      />
+
+      <select
+        value={category}
+        onChange={e => setCategory(e.target.value)}
+        className="w-full mb-3 px-3 py-2 border rounded"
+      >
         <option value="Nut-Based">Nut-Based</option>
         <option value="Milk-Based">Milk-Based</option>
         <option value="Vegetable-Based">Vegetable-Based</option>
@@ -64,6 +77,7 @@ const AddSweetForm = () => {
         min="50"
         value={price}
         onChange={e => setPrice(e.target.value)}
+        className="w-full mb-3 px-3 py-2 border rounded"
       />
 
       <input
@@ -72,9 +86,15 @@ const AddSweetForm = () => {
         min="1"
         value={quantity}
         onChange={e => setQuantity(e.target.value)}
+        className="w-full mb-3 px-3 py-2 border rounded"
       />
 
-      <button type="submit">Add Sweet</button>
+      <button
+        type="submit"
+        className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
+      >
+        Add Sweet
+      </button>
     </form>
   );
 };

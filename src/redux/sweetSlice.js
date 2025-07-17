@@ -30,6 +30,16 @@ export const sweetSlice = createSlice({
     setSearchQuery: (state, action) => {
       state.searchQuery = action.payload;
     },
+    updateSweet: (state, action) => {
+      const { id, updatedData } = action.payload;
+      const sweet = state.sweets.find(s => s.id === id);
+      if (sweet) {
+        sweet.name = updatedData.name || sweet.name;
+        sweet.category = updatedData.category || sweet.category;
+        sweet.price = updatedData.price || sweet.price;
+        sweet.quantity = updatedData.quantity || sweet.quantity;
+      }
+    },
   },
 });
 
@@ -39,6 +49,7 @@ export const {
   purchaseSweet,
   restockSweet,
   setSearchQuery,
+  updateSweet,
 } = sweetSlice.actions;
 
 export default sweetSlice.reducer;
