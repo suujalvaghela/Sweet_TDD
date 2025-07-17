@@ -49,6 +49,7 @@ const SweetList = () => {
           onChange={(e) => setSortField(e.target.value)}
           className="px-3 py-2 border rounded"
         >
+          <option value="id">ID</option>
           <option value="name">Name</option>
           <option value="category">Category</option>
           <option value="price">Price</option>
@@ -63,6 +64,7 @@ const SweetList = () => {
           <table className="min-w-full bg-white border border-gray-200">
             <thead>
               <tr className="bg-gray-100 text-left">
+                <th className="py-2 px-4 border-b">ID</th>
                 <th className="py-2 px-4 border-b">Name</th>
                 <th className="py-2 px-4 border-b">Category</th>
                 <th className="py-2 px-4 border-b">Price</th>
@@ -73,6 +75,7 @@ const SweetList = () => {
             <tbody>
               {sorted.map((sweet) => (
                 <tr key={sweet.id} className="hover:bg-gray-50">
+                  <td className="py-2 px-4 border-b">{sweet.id}</td>
                   <td className="py-2 px-4 border-b">{sweet.name}</td>
                   <td className="py-2 px-4 border-b">{sweet.category}</td>
                   <td className="py-2 px-4 border-b">₹{sweet.price}</td>
@@ -99,6 +102,7 @@ const SweetList = () => {
                       </button>
                       <button
                         onClick={() => {
+                          const newId = parseInt(prompt('Enter new ID', sweet.id));
                           const newName = prompt('Enter new name', sweet.name);
                           const newCategory = prompt(
                             'Enter new category',
@@ -112,6 +116,8 @@ const SweetList = () => {
                           );
 
                           if (
+                            !isNaN(newId) &&
+                            newId > 0 &&
                             newName &&
                             newCategory &&
                             !isNaN(newPrice) &&
@@ -123,6 +129,7 @@ const SweetList = () => {
                               updateSweet({
                                 id: sweet.id,
                                 updatedData: {
+                                  id: newId,
                                   name: newName,
                                   category: newCategory,
                                   price: newPrice,

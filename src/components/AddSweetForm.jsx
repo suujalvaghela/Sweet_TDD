@@ -4,6 +4,7 @@ import { addSweet } from '../redux/sweetSlice';
 
 const AddSweetForm = () => {
   const dispatch = useDispatch();
+  const [id, setId] = useState(''); // 👈 new state for manual ID
   const [name, setName] = useState('');
   const [category, setCategory] = useState('Nut-Based');
   const [price, setPrice] = useState('');
@@ -12,8 +13,14 @@ const AddSweetForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const idValue = parseInt(id, 10);
     const priceValue = parseFloat(price);
     const quantityValue = parseInt(quantity, 10);
+
+    if (isNaN(idValue) || idValue <= 0) {
+      alert('ID must be a positive number.');
+      return;
+    }
 
     if (!name || !category) {
       alert('Name and category are required.');
@@ -31,6 +38,7 @@ const AddSweetForm = () => {
     }
 
     dispatch(addSweet({
+      id: idValue, // 👈 use manually entered ID
       name,
       category,
       price: priceValue,
@@ -38,6 +46,7 @@ const AddSweetForm = () => {
     }));
 
     // Reset form
+    setId('');
     setName('');
     setCategory('Nut-Based');
     setPrice('');
@@ -50,6 +59,15 @@ const AddSweetForm = () => {
       className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-md mx-auto"
     >
       <h2 className="text-xl font-bold mb-4 text-center">Add Sweet</h2>
+
+      <input
+        placeholder="ID"
+        type="number"
+        min="1"
+        value={id}
+        onChange={e => setId(e.target.value)}
+        className="w-full mb-3 px-3 py-2 border rounded"
+      />
 
       <input
         placeholder="Name"
